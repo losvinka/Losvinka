@@ -1,0 +1,86 @@
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-20deg);
+  }
+  50% {
+    transform: translateY(-3vh) rotate(-20deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1) rotate(15deg);
+  }
+  50% {
+    transform: scale(1.15) rotate(15deg);
+  }
+}
+
+@keyframes scale {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+}
+
+@keyframes tilt {
+  0%,
+  100% {
+    transform: rotate(-30deg);
+  }
+  50% {
+    transform: rotate(-45deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-1vw);
+  }
+  75% {
+    transform: translateX(1vw);
+  }
+}
+
+/* Применение с новыми настройками */
+.animate-float {
+  animation: float 2.5s ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.animate-scale {
+  animation: scale 1.8s ease-in-out infinite;
+}
+
+.animate-tilt {
+  animation: tilt 2s ease-in-out infinite;
+}
+
+/* Доп. класс для вращения и пульсации */
+.rotate {
+  animation: spin 4s linear infinite;
+}
