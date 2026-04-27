@@ -1,0 +1,2111 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Losvinka</title>
+    <meta
+      name="description"
+      content="Портфолио Тамары Пак: редактура, копирайтинг, брендинг, креативные индустрии."
+    />
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png" />
+
+    <!--
+    Чтобы подключить Hibana, положите файл сюда: assets/fonts/hibana.woff2
+    Затем раскомментируйте этот блок:
+
+    @font-face {
+      font-family: 'Hibana';
+      src: url('./assets/fonts/hibana.woff2') format('woff2');
+      font-weight: 400 700;
+      font-style: normal;
+      font-display: swap;
+    }
+  -->
+
+    <style>
+      :root {
+        --bg: #eee6dc;
+        --paper: #f8f1e8;
+        --paper-strong: #fffaf3;
+        --ink: #22224f;
+        --muted: #68677d;
+        --black: #09091a;
+        --white: #f8f1e8;
+        --blue-deep: #25255f;
+        --blue: #8ba9c9;
+        --blue-soft: #c8d8e8;
+        --blue-pale: #e4edf5;
+        --beige: #d8cbbb;
+        --raspberry: #c2185b;
+        --raspberry-soft: #f2a0c2;
+        --raspberry-pale: #f7d4e4;
+        --line: rgba(34, 34, 79, 0.15);
+        --shadow: 0 22px 60px rgba(22, 22, 57, 0.12);
+        --radius-xl: 28px;
+        --radius-lg: 22px;
+        --radius-md: 16px;
+        --max: 1180px;
+        --main-font: "Hibana", Inter, Arial, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(
+            circle at 10% 6%,
+            rgba(242, 160, 194, 0.28),
+            transparent 26%
+          ),
+          radial-gradient(
+            circle at 82% 14%,
+            rgba(200, 216, 232, 0.48),
+            transparent 28%
+          ),
+          radial-gradient(
+            circle at 72% 60%,
+            rgba(216, 203, 187, 0.3),
+            transparent 30%
+          ),
+          var(--bg);
+        color: var(--ink);
+        font-family: var(--main-font);
+        font-size: 16px;
+        line-height: 1.68;
+        text-wrap: pretty;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      button {
+        font: inherit;
+      }
+      .page {
+        overflow: visible;
+      }
+      .container {
+        width: min(var(--max), calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+      }
+      main {
+        padding-top: 90px;
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 11px 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: rgba(248, 241, 232, 0.8);
+        box-shadow: 0 12px 32px rgba(22, 22, 57, 0.08);
+        backdrop-filter: blur(18px);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 44px;
+        font-size: clamp(18px, 2vw, 24px);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        white-space: nowrap;
+      }
+
+      .brand-dot {
+        position: relative;
+        width: 12px;
+        height: 12px;
+        flex: 0 0 auto;
+        border-radius: 50%;
+        background: var(--blue-deep);
+      }
+
+      .brand-dot::before,
+      .brand-dot::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+
+      .brand-dot::before {
+        left: 18px;
+        background: var(--raspberry-soft);
+      }
+      .brand-dot::after {
+        left: 36px;
+        background: var(--blue-soft);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+
+      .nav a,
+      .lang-toggle,
+      .chip,
+      .link-button,
+      .icon-button,
+      .modal-actions a {
+        border: 1px solid transparent;
+        border-radius: var(--radius-md);
+        background: transparent;
+        color: var(--ink);
+        cursor: pointer;
+        transition:
+          transform 180ms ease,
+          background 180ms ease,
+          color 180ms ease,
+          border-color 180ms ease,
+          box-shadow 180ms ease;
+      }
+
+      .nav a,
+      .lang-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 34px;
+        padding: 7px 11px;
+        font-size: 14px;
+        line-height: 1.2;
+        opacity: 0.78;
+        white-space: nowrap;
+      }
+
+      .nav a:hover,
+      .lang-toggle:hover,
+      .link-button:hover,
+      .icon-button:hover,
+      .modal-actions a:hover,
+      .chip:hover {
+        transform: translateY(-2px);
+        background: var(--blue-soft);
+        color: var(--ink);
+        border-color: var(--blue-soft);
+        box-shadow: 0 10px 24px rgba(22, 22, 57, 0.14);
+        opacity: 1;
+      }
+
+      .hero {
+        padding: 78px 0 42px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 0.82fr;
+        gap: 34px;
+        align-items: stretch;
+      }
+
+      .hero-card {
+        position: relative;
+        min-height: 520px;
+        padding: clamp(26px, 5vw, 56px);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        background: rgba(248, 241, 232, 0.68);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        backdrop-filter: blur(18px);
+      }
+
+      .hero-card::before,
+      .hero-card::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .hero-card::before {
+        width: 260px;
+        height: 260px;
+        right: -52px;
+        top: -62px;
+        background: linear-gradient(
+          135deg,
+          var(--raspberry-soft),
+          var(--blue-soft)
+        );
+        opacity: 0.42;
+      }
+
+      .hero-card::after {
+        width: 170px;
+        height: 170px;
+        left: -52px;
+        bottom: 70px;
+        background: linear-gradient(135deg, var(--raspberry), var(--blue));
+        opacity: 0.18;
+      }
+
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        min-height: 36px;
+        margin-bottom: 18px;
+        padding: 8px 12px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        background: rgba(255, 255, 255, 0.44);
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.25;
+      }
+
+      .hero h1,
+      .section-title,
+      .contact-title,
+      .modal-content h2 {
+        margin: 0;
+        font-family: var(--main-font);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: var(--ink);
+      }
+
+      .hero h1 {
+        font-size: clamp(42px, 7vw, 92px);
+        line-height: 1.12;
+      }
+
+      .hero-lead {
+        max-width: 690px;
+        margin: 22px 0 0;
+        font-size: clamp(18px, 2.2vw, 27px);
+        line-height: 1.55;
+        color: var(--muted);
+      }
+
+      .hero-side {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
+
+      .hero-photo,
+      .about-photo {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        background: linear-gradient(
+          135deg,
+          var(--blue-pale),
+          var(--raspberry-pale)
+        );
+        box-shadow: var(--shadow);
+      }
+
+      .hero-photo {
+        width: min(100%, 430px);
+        aspect-ratio: 4 / 5;
+        margin: 0;
+      }
+      .hero-photo img,
+      .about-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      section {
+        padding: 42px 0;
+        scroll-margin-top: 110px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 18px;
+      }
+
+      .section-title {
+        font-size: clamp(42px, 6vw, 78px);
+        line-height: 1.14;
+      }
+
+      .section-note {
+        position: relative;
+        max-width: 540px;
+        margin: 0;
+        padding: 18px 20px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: linear-gradient(
+          135deg,
+          rgba(200, 216, 232, 0.82),
+          rgba(242, 160, 194, 0.34),
+          rgba(248, 241, 232, 0.88)
+        );
+        color: var(--blue-deep);
+        font-size: 16px;
+        line-height: 1.62;
+        box-shadow: 0 16px 44px rgba(22, 22, 57, 0.08);
+      }
+
+      .section-note::before {
+        content: "";
+        position: absolute;
+        width: 58px;
+        height: 58px;
+        right: 16px;
+        top: -18px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          var(--raspberry-soft),
+          var(--blue-soft)
+        );
+        z-index: -1;
+      }
+
+      .about-grid {
+        display: block;
+      }
+
+      .about-photo {
+        min-height: 590px;
+      }
+
+      .section-card,
+      .project-card,
+      .post-card,
+      .document-card,
+      .post-group,
+      .guide-card {
+        position: relative;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        background: rgba(248, 241, 232, 0.76);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+      }
+
+      .section-card::before,
+      .post-group::before,
+      .guide-card::before {
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        right: 22px;
+        top: 18px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          rgba(242, 160, 194, 0.34),
+          rgba(200, 216, 232, 0.28)
+        );
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .post-group::before {
+        display: none;
+      }
+      .post-group {
+        position: relative;
+      }
+
+      .post-logo {
+        position: absolute;
+        right: 22px;
+        top: 18px;
+        width: 90px;
+        height: 90px;
+        object-fit: contain;
+        border-radius: 16px;
+      }
+      .section-card {
+        padding: clamp(24px, 4vw, 42px);
+      }
+
+      .language-badges {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+      .language-badge {
+        padding: 6px 10px;
+        border-radius: 12px;
+        font-size: 13px;
+        line-height: 1.25;
+        background: linear-gradient(
+          135deg,
+          var(--raspberry-soft),
+          var(--blue-soft)
+        );
+      }
+      .language-badge.secondary {
+        background: rgba(200, 216, 232, 0.6);
+      }
+
+      .section-card p,
+      .post-group-intro,
+      .modal-content p,
+      .stage-card span,
+      .guide-card p {
+        line-height: 1.68;
+      }
+
+      .section-card p {
+        margin: 0 0 16px;
+        font-size: clamp(18px, 2vw, 22px);
+      }
+
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 24px;
+      }
+      .tag,
+      .meta-pill {
+        display: inline-flex;
+        align-items: center;
+        border-radius: var(--radius-md);
+        line-height: 1.25;
+      }
+      .tag {
+        min-height: 34px;
+        padding: 8px 12px;
+        background: var(--ink);
+        color: var(--white);
+        font-size: 14px;
+      }
+
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 20px 0 22px;
+      }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        padding: 10px 14px;
+        border-color: var(--line);
+        background: rgba(248, 241, 232, 0.72);
+        line-height: 1.25;
+      }
+      .chip.is-active {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: var(--white);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .project-card,
+      .post-card,
+      .document-card {
+        display: flex;
+        flex-direction: column;
+        min-height: 430px;
+        overflow: hidden;
+        cursor: pointer;
+        transform: translateY(0);
+        transition:
+          transform 220ms ease,
+          box-shadow 220ms ease,
+          border-color 220ms ease,
+          background 220ms ease,
+          color 220ms ease;
+      }
+
+      .project-card:hover,
+      .post-card:hover,
+      .document-card:hover {
+        transform: translateY(-7px) rotate(-0.25deg);
+        border-color: var(--blue-soft);
+        background: var(--blue-soft);
+        color: var(--ink);
+        box-shadow: 0 30px 76px rgba(22, 22, 57, 0.2);
+      }
+
+      .project-card:hover .card-text,
+      .post-card:hover .card-text,
+      .document-card:hover .card-text {
+        color: var(--blue-deep);
+      }
+
+      .project-card:hover .meta-pill,
+      .post-card:hover .meta-pill,
+      .document-card:hover .meta-pill {
+        background: rgba(248, 241, 232, 0.55);
+        color: var(--ink);
+      }
+
+      .card-image {
+        aspect-ratio: 4 / 3;
+        margin: 12px 12px 0;
+        overflow: hidden;
+        border-radius: var(--radius-lg);
+        background: linear-gradient(
+          135deg,
+          var(--blue-pale),
+          var(--raspberry-pale),
+          var(--blue-soft)
+        );
+      }
+
+      .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 420ms ease;
+      }
+      .project-card:hover .card-image img,
+      .post-card:hover .card-image img,
+      .document-card:hover .card-image img {
+        transform: scale(1.05);
+      }
+
+      .card-body {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: 14px;
+        padding: 20px;
+      }
+      .card-title {
+        margin: 0;
+        font-size: 28px;
+        line-height: 1.18;
+        letter-spacing: -0.02em;
+        font-weight: 700;
+      }
+      .card-text {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.58;
+      }
+      .card-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: auto;
+      }
+      .meta-pill {
+        padding: 6px 9px;
+        background: rgba(21, 21, 21, 0.07);
+        font-size: 12px;
+      }
+
+      .posts-wrap {
+        display: grid;
+        gap: 24px;
+      }
+      .post-group {
+        padding: clamp(22px, 4vw, 34px);
+        overflow: hidden;
+      }
+      .post-group h3 {
+        margin: 0 0 12px;
+        font-size: clamp(30px, 4vw, 52px);
+        line-height: 1.16;
+        letter-spacing: -0.02em;
+        font-weight: 700;
+      }
+      .post-group-intro {
+        max-width: 860px;
+        margin: 0 0 20px;
+        color: var(--muted);
+        font-size: 18px;
+      }
+      .posts-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+      .post-card {
+        min-height: 320px;
+        border-radius: var(--radius-lg);
+      }
+      .post-card .card-title {
+        font-size: 22px;
+      }
+      .document-card {
+        min-height: 360px;
+      }
+
+      .contact-section {
+        padding: 0;
+        margin-top: 46px;
+        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        background: var(--black);
+        color: var(--white);
+        overflow: hidden;
+      }
+
+      .contact-inner {
+        width: min(var(--max), calc(100% - 32px));
+        margin: 0 auto;
+        padding: clamp(42px, 7vw, 86px) 0 32px;
+      }
+      .contact-title {
+        max-width: 900px;
+        margin-bottom: 26px;
+        color: var(--white);
+        font-size: clamp(44px, 7vw, 96px);
+        line-height: 1.12;
+      }
+      .contact-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 46px;
+      }
+
+      .contact-links .link-button {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 12px 16px;
+        border-color: rgba(255, 255, 255, 0.2);
+        background: linear-gradient(
+          135deg,
+          var(--raspberry-soft),
+          var(--blue-soft)
+        );
+        color: var(--white);
+        line-height: 1.25;
+      }
+
+      .contact-links .link-button:hover {
+        background: var(--blue-soft);
+        color: var(--ink);
+        border-color: var(--blue-soft);
+      }
+
+      .footer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 20px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.16);
+        color: rgba(255, 250, 242, 0.72);
+      }
+
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: none;
+        padding: 18px;
+        background: rgba(8, 8, 8, 0.72);
+        backdrop-filter: blur(12px);
+      }
+      .modal.is-open {
+        display: grid;
+        place-items: center;
+      }
+      .modal-dialog {
+        position: relative;
+        width: min(1060px, 100%);
+        max-height: calc(100vh - 36px);
+        overflow: auto;
+        border-radius: var(--radius-xl);
+        background: var(--paper);
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.36);
+      }
+      .modal-close {
+        position: sticky;
+        top: 14px;
+        float: right;
+        z-index: 2;
+        width: 44px;
+        height: 44px;
+        margin: 14px 14px 0 0;
+        border: 0;
+        border-radius: var(--radius-md);
+        background: var(--black);
+        color: var(--white);
+        cursor: pointer;
+      }
+      .modal-content {
+        padding: clamp(22px, 4vw, 44px);
+        border-radius: var(--radius-xl);
+      }
+      .modal-content h2 {
+        margin-bottom: 14px;
+        font-size: clamp(40px, 5.5vw, 72px);
+        line-height: 1.12;
+      }
+      .modal-content p {
+        max-width: 780px;
+        font-size: 18px;
+      }
+      .modal-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 22px 0 0;
+      }
+      .modal-actions a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 42px;
+        padding: 11px 14px;
+        background: var(--ink);
+        color: var(--white);
+        line-height: 1.25;
+      }
+
+      .stage-list {
+        display: grid;
+        gap: 12px;
+        margin: 22px 0;
+      }
+      .stage-card {
+        padding: 16px 18px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: linear-gradient(
+          135deg,
+          rgba(200, 216, 232, 0.44),
+          rgba(247, 212, 228, 0.34)
+        );
+      }
+      .stage-card strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--blue-deep);
+      }
+      .meanflow-actions {
+        display: grid;
+        gap: 10px;
+        max-width: 440px;
+      }
+      .meanflow-actions a {
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .carousel {
+        position: relative;
+        margin: 18px 0 22px;
+        overflow: hidden;
+        border-radius: var(--radius-xl);
+        background: linear-gradient(
+          135deg,
+          var(--blue-pale),
+          var(--raspberry-pale)
+        );
+      }
+      .carousel-track {
+        display: flex;
+        transition: transform 260ms ease;
+      }
+      .carousel-slide {
+        min-width: 100%;
+        aspect-ratio: 16 / 10;
+        background: linear-gradient(135deg, var(--blue), var(--blue-pale));
+      }
+      .carousel-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .carousel-controls {
+        position: absolute;
+        right: 14px;
+        bottom: 14px;
+        display: flex;
+        gap: 8px;
+      }
+      .icon-button {
+        width: 42px;
+        height: 42px;
+        border: 0;
+        border-radius: var(--radius-md);
+        background: rgba(255, 249, 239, 0.9);
+      }
+
+      .guide-card {
+        padding: clamp(22px, 4vw, 34px);
+        background: rgba(200, 216, 232, 0.46);
+      }
+      .guide-card pre {
+        overflow: auto;
+        padding: 18px;
+        border-radius: var(--radius-lg);
+        background: rgba(8, 8, 8, 0.92);
+        color: var(--white);
+        line-height: 1.6;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 620ms ease,
+          transform 620ms ease;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 980px) {
+        .header-inner {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .nav {
+          justify-content: flex-start;
+        }
+        .hero-grid,
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-card {
+          min-height: auto;
+        }
+        .hero-side {
+          justify-content: center;
+        }
+        .hero-photo {
+          margin: 0 auto;
+        }
+        .grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .posts-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .container,
+        .contact-inner {
+          width: min(100% - 20px, var(--max));
+        }
+        .hero {
+          padding-top: 38px;
+        }
+        .section-head,
+        .footer {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .grid,
+        .posts-grid {
+          grid-template-columns: 1fr;
+        }
+        .about-photo {
+          min-height: 420px;
+        }
+        .project-card,
+        .document-card {
+          min-height: 380px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <header class="site-header container">
+        <div class="header-inner">
+          <a href="#top" class="brand" aria-label="На главную">
+            <span class="brand-dot" aria-hidden="true"></span>
+            <span data-i18n="brand">losvinka</span>
+          </a>
+          <nav class="nav" aria-label="Навигация">
+            <a href="#about" data-i18n="navAbout">обо мне</a>
+            <a href="#projects" data-i18n="navProjects">проекты</a>
+            <a href="#posts" data-i18n="navPosts">посты</a>
+            <a href="#documents" data-i18n="navDocuments">рекомендации</a>
+            <a href="#contacts" data-i18n="navContacts">контакты</a>
+            <button class="lang-toggle" type="button" id="langToggle">
+              EN
+            </button>
+          </nav>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero">
+          <div class="container hero-grid">
+            <div class="hero-card reveal">
+              <div class="kicker" data-i18n="heroKicker">
+                редактор · копирайтер · креативные индустрии
+              </div>
+              <h1 data-i18n="heroTitle">Тамара Пак</h1>
+              <p class="hero-lead" data-i18n="heroLead"></p>
+            </div>
+            <div class="hero-side reveal">
+              <figure class="hero-photo">
+                <img
+                  src="./assets/images/hero.jpg"
+                  alt="Тамара Пак"
+                  onerror="this.style.display = 'none'"
+                />
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <section id="about">
+          <div class="container">
+            <div class="section-head reveal">
+              <h2 class="section-title" data-i18n="aboutTitle">Обо мне</h2>
+            </div>
+            <div class="about-grid">
+              <div class="section-card reveal">
+                <div class="language-badges" aria-label="Языки">
+                  <span class="language-badge">EN — B2</span>
+                  <span class="language-badge secondary">FR — A1</span>
+                  <span class="language-badge">Figma — продвинутый</span>
+                </div>
+                <p data-i18n="aboutP1"></p>
+                <p data-i18n="aboutP2"></p>
+                <p data-i18n="aboutP3"></p>
+                <div class="tag-list" id="strengthTags"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="projects">
+          <div class="container">
+            <div class="section-head reveal">
+              <h2 class="section-title" data-i18n="projectsTitle">Проекты</h2>
+              <p class="section-note" data-i18n="projectsNote"></p>
+            </div>
+            <div class="filters reveal" id="filters"></div>
+            <div class="grid" id="projectsGrid"></div>
+          </div>
+        </section>
+
+        <section id="posts">
+          <div class="container">
+            <div class="section-head reveal">
+              <h2 class="section-title" data-i18n="postsTitle">Посты</h2>
+            </div>
+            <div class="posts-wrap">
+              <div class="post-group reveal">
+                <img
+                  class="post-logo"
+                  src="./assets/images/tj-logo.png"
+                  alt="Т—Ж"
+                />
+                <h3 data-i18n="tjTitle"></h3>
+                <p class="post-group-intro" data-i18n="tjIntro"></p>
+                <div class="posts-grid" id="tjPostsGrid"></div>
+              </div>
+              <div class="post-group reveal">
+                <img
+                  class="post-logo"
+                  src="./assets/images/curators-logo.png"
+                  alt="Кураторы Вышки"
+                />
+                <h3 data-i18n="curatorsTitle"></h3>
+                <p class="post-group-intro" data-i18n="curatorsIntro"></p>
+                <div class="grid" id="curatorPostsGrid"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="documents">
+          <div class="container">
+            <div class="section-head reveal">
+              <h2 class="section-title" data-i18n="docsTitle">
+                Документы и рекомендации
+              </h2>
+              <p class="section-note" data-i18n="docsNote"></p>
+            </div>
+            <div class="grid" id="documentsGrid"></div>
+          </div>
+        </section>
+      </main>
+
+      <section class="contact-section" id="contacts">
+        <div class="contact-inner">
+          <h2 class="contact-title" data-i18n="contactsTitle">
+            Связаться со мной
+          </h2>
+          <div class="contact-links">
+            <a class="link-button" href="tel:+79253521291"
+              >+7 (925) 352-12-91</a
+            >
+            <a
+              class="link-button"
+              href="https://t.me/losvinka"
+              target="_blank"
+              rel="noreferrer"
+              >Telegram</a
+            >
+            <a
+              class="link-button"
+              href="https://vk.ru/losvinka"
+              target="_blank"
+              rel="noreferrer"
+              >VK</a
+            >
+            <a
+              class="link-button"
+              href="https://hsedesign.ru/account/losvinka"
+              target="_blank"
+              rel="noreferrer"
+              >HSE Portfolio</a
+            >
+            <a class="link-button" href="mailto:tlpak@edu.hse.ru"
+              >tlpak@edu.hse.ru</a
+            >
+          </div>
+          <footer class="footer">
+            <div>
+              <strong
+                >©
+                <span data-i18n="footerName"
+                  >Тамара Пак / losvinka</span
+                ></strong
+              ><br />
+              <span data-i18n="footerRole"
+                >Редактор, копирайтер, креативные индустрии</span
+              >
+            </div>
+            <div data-i18n="footerNote"></div>
+          </footer>
+        </div>
+      </section>
+    </div>
+
+    <div class="modal" id="modal" aria-hidden="true">
+      <div
+        class="modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <button
+          class="modal-close"
+          type="button"
+          id="modalClose"
+          aria-label="Закрыть"
+        >
+          ×
+        </button>
+        <div class="modal-content" id="modalContent"></div>
+      </div>
+    </div>
+
+    <script>
+      "use strict";
+
+      var currentLang = "ru";
+      var activeFilter = "all";
+
+      var translations = {
+        ru: {
+          brand: "losvinka",
+          navAbout: "обо мне",
+          navProjects: "проекты",
+          navPosts: "посты",
+          navDocuments: "рекомендации",
+          navContacts: "контакты",
+          heroKicker: "редактор · копирайтер · креативные индустрии",
+          heroTitle: "Тамара Пак",
+          heroLead:
+            "Работаю с текстом, редактурой, брендингом и коммуникациями — соединяю структуру, интонацию и визуальную логику проекта.",
+          aboutTitle: "Обо мне",
+          aboutP1:
+            "Я учусь на втором курсе НИУ ВШЭ по программе «Управление в креативных индустриях». Окончила школу с двумя медалями и красным аттестатом, а сейчас занимаю позицию главного редактора в одной из самых масштабных организаций НИУ ВШЭ — «Кураторы Вышки».",
+          aboutP2:
+            "Мне интересна издательская сфера: медиа, издательства, редактура, копирайтинг и работа с текстом. Я хорошо проявляю себя в командных задачах, умею брать ответственность, быстро адаптируюсь и спокойно работаю в многозадачности.",
+          aboutP3:
+            "Больше всего мне близки проекты, где нужно совмещать текст, брендинг, структуру и креатив: от редакторской логики до цельной коммуникации.",
+          projectsTitle: "Проекты",
+          projectsNote:
+            "Благодаря обучению на программе «Управление в креативных индустриях» у меня есть базовые навыки кодинга, маркетинга и разработки нон-скриптед форматов.",
+          postsTitle: "Посты",
+          tjTitle: "Посты в Т—Ж",
+          tjIntro:
+            "С октября по декабрь я работала с текстами для Т—Ж: писала посты, адаптировала материалы под формат площадки, работала с подачей, структурой и редакторской логикой. Этот опыт помог мне лучше понять, как писать понятно, живо и точно, сохраняя интонацию медиа и интерес читателя.",
+          curatorsTitle: "Посты в «Кураторах Вышки»",
+          curatorsIntro:
+            "В «Кураторах Вышки» я отвечаю за редакторское направление: веду тексты, рассылки, публикации и координирую коммуникацию в рамках пиар-кампаний. Для меня это не только работа с постами, но и полноценное управление тоном, структурой и логикой коммуникации большого студенческого сообщества. На сайте представлены не все посты, но вся моя деятельность в качестве главного редактора начинается с 3 января 2026 года.",
+          docsTitle: "Документы и рекомендации",
+          docsNote:
+            "Сертификаты, справки и рекомендательные письма можно открыть в полноформатном режиме.",
+          guideTitle: "Как добавить изображения",
+          guideIntro:
+            "Создайте папку assets/images рядом с index.html. Затем положите туда изображения с такими названиями. Если хотите изменить имя файла, поменяйте путь в массивах данных внутри script.",
+          contactsTitle: "Связаться со мной",
+          footerName: "Тамара Пак / losvinka",
+          footerRole: "Редактор, копирайтер, креативные индустрии",
+          footerNote: "Сайт-портфолио для проектов, текстов и коммуникаций.",
+          all: "всё",
+          open: "сохранить",
+          next: "дальше",
+          prev: "назад",
+          filters: {
+            branding: "брендинг",
+            marketing: "маркетинг",
+            nonscripted: "нон-скриптед",
+            visual: "визуальные исследования",
+          },
+          strengths: [
+            "работа в команде",
+            "ответственность",
+            "адаптивность",
+            "многозадачность",
+            "работа с текстом",
+            "брендинг",
+            "редактура",
+            "копирайтинг",
+          ],
+        },
+        en: {
+          brand: "losvinka",
+          navAbout: "about",
+          navProjects: "projects",
+          navPosts: "posts",
+          navDocuments: "references",
+          navContacts: "contacts",
+          heroKicker: "editor · copywriter · creative industries",
+          heroTitle: "Tamara Pak",
+          heroLead:
+            "I work with texts, editing, branding and communications — bringing together structure, tone and visual logic.",
+          aboutTitle: "About me",
+          aboutP1:
+            "I am a second-year student at HSE University, studying Creative Industries Management. I graduated from school with two medals and an honours certificate, and now I work as editor-in-chief at HSE Curators, one of the university’s largest student organisations.",
+          aboutP2:
+            "I am interested in publishing, media, editing, copywriting and all forms of text work. I work well in teams, take responsibility, adapt quickly and stay focused in multitasking environments.",
+          aboutP3:
+            "I am especially drawn to projects that combine text, branding, structure and creativity — from editorial logic to complete communication systems.",
+          projectsTitle: "Projects",
+          projectsNote:
+            "Through the Creative Industries Management programme, I have developed basic skills in coding, marketing and non-scripted format development.",
+          postsTitle: "Posts",
+          tjTitle: "Posts for T—J",
+          tjIntro:
+            "From October to December, I worked on texts for T—J: writing posts, adapting materials for the platform, and shaping structure, tone and editorial logic. This experience helped me understand how to write clearly, vividly and precisely while preserving a media brand’s voice and the reader’s interest.",
+          curatorsTitle: "Posts for HSE Curators",
+          curatorsIntro:
+            "At HSE Curators, I am responsible for the editorial direction: texts, newsletters, publications and communication for PR campaigns. For me, this is not only about posts, but also about managing tone, structure and the communication logic of a large student community. Not all posts are shown on the website, but my work as editor-in-chief starts from January 3, 2026.",
+          docsTitle: "Documents and references",
+          docsNote:
+            "Certificates, proof of study and recommendation letters can be opened in full-screen view.",
+          guideTitle: "How to add images",
+          guideIntro:
+            "Create an assets/images folder next to index.html. Then add images using these filenames. To rename a file, update the corresponding path in the data arrays inside the script.",
+          contactsTitle: "Let’s get in touch",
+          footerName: "Tamara Pak / losvinka",
+          footerRole: "Editor, copywriter, creative industries",
+          footerNote:
+            "A portfolio website for projects, texts and communication work.",
+          all: "all",
+          open: "save",
+          next: "next",
+          prev: "prev",
+          filters: {
+            branding: "branding",
+            marketing: "marketing",
+            nonscripted: "non-scripted",
+            visual: "visual research",
+          },
+          strengths: [
+            "teamwork",
+            "responsibility",
+            "adaptability",
+            "multitasking",
+            "text work",
+            "branding",
+            "editing",
+            "copywriting",
+          ],
+        },
+      };
+
+      var projects = [
+        {
+          id: "sonder",
+          categories: ["branding"],
+          cover: "./assets/images/sonder-cover.jpg",
+          images: [
+            "./assets/images/sonder-cover.jpg",
+            "./assets/images/sonder-1.jpg",
+            "./assets/images/sonder-2.jpg",
+            "./assets/images/sonder-3.jpg",
+          ],
+          links: [
+            {
+              label: "HSE Design",
+              url: "https://hsedesign.ru/project/b127dfcc965442eaaa169b2f1aab9d22",
+            },
+          ],
+          ru: {
+            title: "SONDER",
+            excerpt:
+              "Брендинг выдуманной выставки о человеческих жизнях и личных историях.",
+            text: "На последнем модуле первого курса я создала брендинг выдуманной выставки SONDER. Sonder — выставка человеческих жизней, в которой каждый может рассказать свою историю: простую, повседневную, личную. Мы редко задумываемся о том, что каждый человек живёт своей сложной, полной жизнью — со своими заботами, радостями, страхами и привычками. SONDER — это пространство, где видно, что за каждым лицом скрывается целый мир.",
+          },
+          en: {
+            title: "SONDER",
+            excerpt:
+              "Branding for a fictional exhibition about human lives and personal stories.",
+            text: "During the final module of my first year, I created the branding for SONDER, a fictional exhibition about human lives. Sonder is a space where anyone can share a story: simple, everyday and personal. We rarely think about the fact that every person lives a complex, full life, with their own concerns, joys, fears and routines. SONDER makes this visible: behind every face, there is an entire world.",
+          },
+        },
+        {
+          id: "meanflow",
+          categories: ["marketing", "nonscripted", "branding"],
+          cover: "./assets/images/meanflow-1.jpg",
+          images: [
+            "./assets/images/meanflow-1.jpg",
+            "./assets/images/meanflow-2.jpg",
+            "./assets/images/meanflow-3.jpg",
+          ],
+          links: [
+            {
+              label: "Этап 1 · Начало разработки",
+              url: "https://hsedesign.ru/project/a5ba8759f43a48789034e1950376e819",
+            },
+            {
+              label: "Этап 2 · Брендбук и прототип",
+              url: "https://hsedesign.ru/project/d1c20372dce249128639114eee3d2918",
+            },
+            {
+              label: "Этап 3 · Нон-скриптед и интервью",
+              url: "https://hsedesign.ru/project/4ad801cbe5994dc8921848936a3be10d",
+            },
+          ],
+          stages: {
+            ru: [
+              {
+                title: "Этап 1 · Начало разработки",
+                text: "Формулировка идеи сервиса, базовая логика пользовательского сценария и первые решения по эмоциональной персонализации.",
+              },
+              {
+                title: "Этап 2 · Брендбук и прототип",
+                text: "Разработка визуальной системы, брендбука и прототипа мобильного приложения.",
+              },
+              {
+                title: "Этап 3 · Нон-скриптед и интервью",
+                text: "Создание нон-скриптед формата и отдельной серии интервью вокруг темы эмоций и языка цветов.",
+              },
+            ],
+            en: [
+              {
+                title: "Stage 1 · Project start",
+                text: "Defining the service idea, the basic user flow and the first decisions around emotional personalisation.",
+              },
+              {
+                title: "Stage 2 · Brand book and prototype",
+                text: "Developing the visual system, brand book and mobile app prototype.",
+              },
+              {
+                title: "Stage 3 · Non-scripted and interviews",
+                text: "Creating a non-scripted format and a dedicated interview series around emotions and the language of flowers.",
+              },
+            ],
+          },
+          ru: {
+            title: "MeanFlow*",
+            excerpt:
+              "Сервис эмоциональной персонализации, который помогает выражать чувства через язык цветов.",
+            text: "На втором курсе я работала над проектом MeanFlow*. Это сервис эмоциональной персонализации, который помогает людям выражать чувства через язык цветов. Пользователь выбирает эмоцию или повод, а платформа превращает это в осмысленный букет с объяснением символики и готовым текстом открытки. В рамках проекта был разработан нон-скриптед формат, отдельный формат интервью, брендбук и прототип мобильного приложения.",
+          },
+          en: {
+            title: "MeanFlow*",
+            excerpt:
+              "An emotional personalisation service that helps people express feelings through flowers.",
+            text: "In my second year, I worked on MeanFlow*, an emotional personalisation service that helps people express feelings through the language of flowers. The user chooses an emotion or an occasion, and the platform turns it into a meaningful bouquet with symbolic explanations and a ready-to-use card message. The project included a non-scripted format, a dedicated interview format, a brand book and a mobile app prototype.",
+          },
+        },
+        {
+          id: "susanna",
+          categories: ["visual"],
+          cover: "./assets/images/susanna.jpg",
+          images: ["./assets/images/susanna.jpg"],
+          links: [
+            {
+              label: "HSE Design",
+              url: "https://hsedesign.ru/project/39725aae5a5d4d2cbe131673f4174495",
+            },
+          ],
+          ru: {
+            title: "Сусанна и старцы",
+            excerpt:
+              "Визуальное исследование библейского сюжета и его интерпретаций в разные эпохи.",
+            text: "В рамках обучения на программе мы также занимаемся визуальными исследованиями и анализом культурных сюжетов. Для одного из таких проектов я выбрала библейский сюжет о Сусанне и старцах и рассмотрела, как он интерпретировался визуально в разные эпохи.",
+          },
+          en: {
+            title: "Susanna and the Elders",
+            excerpt:
+              "A visual research project on a biblical story and its interpretations across time.",
+            text: "As part of the programme, we also work with visual research and the analysis of cultural narratives. For one of these projects, I chose the biblical story of Susanna and the Elders and explored how it was visually interpreted in different historical periods.",
+          },
+        },
+      ];
+
+      var tjPosts = [];
+
+      var tjRuExcerpts = [
+        "Анонс выпуска про инфобизнес и секты.",
+        "Полезная информация про инфокурсы.",
+        "Анонс про усталость и выгорание.",
+        "Полезная информация про эффективность работы.",
+        "Анонс про бесплатное жильё СССР.",
+        "Выход видео про жильё СССР.",
+        "Полезная информация про жильё СССР.",
+        "Выход видео про лудоманию.",
+        "Полезная информация про лудоманию.",
+        "Выход видео про экономику бессмертия.",
+        "Анонс про технофеодализм.",
+      ];
+      var tjRuTexts = [
+        "Анонс выпуска про инфобизнес. История человека, попавшего в сектоподобную организацию, и подводка к теме манипуляций.",
+        "Полезный чек-лист: как распознать манипуляции в инфокурсах. Разбор типичных триггеров и уловок «гуру».",
+        "Анонс выпуска про усталость и выгорание. Обещание разобрать причины постоянного истощения.",
+        "Материал с исследованием про эффективность и «разделение» жизни. Вывод: дело не в количестве работы, а в приоритетах.",
+        "Анонс выпуска про миф бесплатного жилья в СССР. Подводка через популярное заблуждение.",
+        "Выход выпуска: разоблачение мифа о бесплатном жилье, объяснение реальных условий получения квартир.",
+        "Дополнительный материал: подробная статья о том, как на самом деле распределялось жильё.",
+        "Выход выпуска про лудоманию. Разбор механизмов зависимости в играх и приложениях.",
+        "Полезный материал: как распознать игровую зависимость и что с ней делать.",
+        "Выход выпуска про «экономику бессмертия». Тема рынка долголетия и его последствий.",
+        "Анонс выпуска про технофеодализм. Подводка к теме власти цифровых платформ над пользователями.",
+      ];
+
+      for (var tjIndex = 1; tjIndex <= 11; tjIndex += 1) {
+        tjPosts.push({
+          id: "tj-" + tjIndex,
+          image: "./assets/images/tj-" + tjIndex + ".jpg",
+          ru: {
+            title: "Пост Т—Ж №" + tjIndex,
+            excerpt: tjRuExcerpts[tjIndex - 1],
+            text: tjRuTexts[tjIndex - 1],
+          },
+          en: {
+            title: "T—J post #" + tjIndex,
+            excerpt: "An example of editorial work for T—J social posts.",
+            text: "An example of a T—J post: shaping structure and tone, adapting the material to the platform format and preserving the editorial voice.",
+          },
+        });
+      }
+
+      var curatorPosts = [
+        {
+          id: "curator-org",
+          image: "./assets/images/curators-1.jpg",
+          url: "https://t.me/curatorhse/2321",
+          ru: {
+            title: "Знакомство с ОРГанизаторами",
+            excerpt: "Серия постов о команде сообщества.",
+            text: "Серия «Знакомство с ОРГанизаторами» помогает показать людей внутри команды и выстроить более живую коммуникацию с аудиторией.",
+          },
+          en: {
+            title: "Meet the organisers",
+            excerpt: "A post series about the community team.",
+            text: "The “Meet the organisers” series introduces the people behind the team and makes communication with the audience more personal.",
+          },
+        },
+        {
+          id: "curator-edu",
+          image: "./assets/images/curators-2.jpg",
+          url: "https://t.me/curatorhse/2252",
+          ru: {
+            title: "Образовательные посты",
+            excerpt: "Материалы с объяснительной и образовательной функцией.",
+            text: "Образовательные посты помогают аудитории лучше понять процессы, правила и возможности как внутри сообщества, так и в самом университете.",
+          },
+          en: {
+            title: "Educational posts",
+            excerpt: "Content with an explanatory and educational function.",
+            text: "Educational posts help the audience understand the community’s processes, rules and opportunities.",
+          },
+        },
+        {
+          id: "curator-thanks",
+          image: "./assets/images/curators-3.jpg",
+          url: "https://t.me/curatorhse/2206",
+          ru: {
+            title: "Благодарности кураторам",
+            excerpt: "Серия публикаций с акцентом на признание вклада команды.",
+            text: "Серия благодарностей делает видимой работу кураторов и поддерживает ценность участия внутри сообщества.",
+          },
+          en: {
+            title: "Thank-you series",
+            excerpt:
+              "A publication series focused on recognising the team’s contribution.",
+            text: "The thank-you series makes the curators’ work visible and reinforces the value of participation in the community.",
+          },
+        },
+        {
+          id: "curator-pr",
+          image: "./assets/images/curators-4.jpg",
+          url: "https://t.me/curatorhse/2169",
+          ru: {
+            title: "Пиарка отборов",
+            excerpt: "Коммуникация для набора новых кураторов.",
+            text: "Пиар-кампания отборов соединяет редакторскую структуру, ясные сообщения и последовательную коммуникацию с аудиторией.",
+          },
+          en: {
+            title: "Recruitment PR campaign",
+            excerpt: "Communication for attracting new participants.",
+            text: "The recruitment PR campaign brings together editorial structure, clear messaging and consistent audience communication.",
+          },
+        },
+      ];
+
+      var documentsData = [
+        {
+          id: "editor-course",
+          image: "./assets/images/documents/editor-course.jpg",
+          url: "https://disk.yandex.ru/i/pvu0ytrtR24Khg",
+          ru: {
+            title: "Сертификат редактора",
+            excerpt: "Сертификат о прохождении курса редактора.",
+            text: "Документ подтверждает прохождение курса редактора.",
+          },
+          en: {
+            title: "Editor course certificate",
+            excerpt: "Certificate of completion for an editor course.",
+            text: "This document confirms completion of an editor course.",
+          },
+        },
+        {
+          id: "study-certificate",
+          image: "./assets/images/documents/study-certificate.jpg",
+          url: "https://disk.yandex.ru/i/r4AGxhLnT9GQoA",
+          ru: {
+            title: "Справка об обучении",
+            excerpt: "Подтверждение обучения в НИУ ВШЭ.",
+            text: "Документ подтверждает обучение в НИУ ВШЭ.",
+          },
+          en: {
+            title: "Proof of study",
+            excerpt: "Confirmation of studies at HSE University.",
+            text: "This document confirms my studies at HSE University.",
+          },
+        },
+        {
+          id: "recommendation-academic",
+          image: "./assets/images/documents/recommendation-academic.jpg",
+          url: "https://disk.yandex.ru/i/H7XWDdzWnx67rQ",
+          ru: {
+            title: "Рекомендация от академического руководителя",
+            excerpt:
+              "Рекомендательное письмо от академического руководителя программы.",
+            text: "Рекомендательное письмо от академического руководителя образовательной программы.",
+          },
+          en: {
+            title: "Academic recommendation",
+            excerpt:
+              "Recommendation letter from the programme’s academic supervisor.",
+            text: "A recommendation letter from the academic supervisor of my programme.",
+          },
+        },
+        {
+          id: "recommendation-tj",
+          image: "./assets/images/documents/recommendation-tj.jpg",
+          url: "https://disk.yandex.ru/i/2urg21bleH-Q0g",
+          ru: {
+            title: "Рекомендация от Т—Ж",
+            excerpt: "Рекомендательное письмо от сотрудника Т—Ж.",
+            text: "Рекомендательное письмо от сотрудника Т—Ж, с которым я работала над постами.",
+          },
+          en: {
+            title: "T—J recommendation",
+            excerpt: "Recommendation letter from a T—J team member.",
+            text: "A recommendation letter from the T—J team member I worked with on posts.",
+          },
+        },
+      ];
+
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function noWidows(value) {
+        var shortWords =
+          "в|во|на|к|ко|с|со|у|о|об|обо|от|до|за|из|и|а|но|по|для|над|под|при|без|про";
+        var pattern = new RegExp("(^|\\s)(" + shortWords + ")\\s+", "gi");
+        return String(value).replace(pattern, "$1$2\u00A0");
+      }
+
+      function setHtmlByI18n() {
+        var nodes = document.querySelectorAll("[data-i18n]");
+        nodes.forEach(function (node) {
+          var key = node.getAttribute("data-i18n");
+          var value = translations[currentLang][key];
+          if (typeof value !== "string") return;
+          if (key === "footerNote") {
+            node.innerHTML = noWidows(value);
+          } else {
+            node.textContent = noWidows(value);
+          }
+        });
+      }
+
+      function renderStrengths() {
+        var root = document.getElementById("strengthTags");
+        root.innerHTML = translations[currentLang].strengths
+          .map(function (item) {
+            return (
+              '<span class="tag">' + noWidows(escapeHtml(item)) + "</span>"
+            );
+          })
+          .join("");
+      }
+
+      function renderFilters() {
+        var root = document.getElementById("filters");
+        var filterMap = translations[currentLang].filters;
+        var items = [{ id: "all", label: translations[currentLang].all }];
+        Object.keys(filterMap).forEach(function (id) {
+          items.push({ id: id, label: filterMap[id] });
+        });
+        root.innerHTML = items
+          .map(function (item) {
+            var active = activeFilter === item.id ? " is-active" : "";
+            return (
+              '<button class="chip' +
+              active +
+              '" type="button" data-filter="' +
+              escapeHtml(item.id) +
+              '">' +
+              noWidows(escapeHtml(item.label)) +
+              "</button>"
+            );
+          })
+          .join("");
+        root.querySelectorAll("[data-filter]").forEach(function (button) {
+          button.addEventListener("click", function () {
+            activeFilter = button.getAttribute("data-filter");
+            renderFilters();
+            renderProjects();
+          });
+        });
+      }
+
+      function cardTemplate(options) {
+        var dataAttr = "";
+        if (options.type === "project")
+          dataAttr = 'data-project="' + escapeHtml(options.id) + '"';
+        if (options.type === "tj")
+          dataAttr = 'data-tj="' + escapeHtml(options.id) + '"';
+        if (options.type === "curator")
+          dataAttr = 'data-curator="' + escapeHtml(options.id) + '"';
+        if (options.type === "document")
+          dataAttr = 'data-document="' + escapeHtml(options.id) + '"';
+        var className =
+          options.type === "document"
+            ? "document-card"
+            : options.type === "project"
+              ? "project-card"
+              : "post-card";
+        var meta = options.meta
+          .map(function (item) {
+            return (
+              '<span class="meta-pill">' +
+              noWidows(escapeHtml(item)) +
+              "</span>"
+            );
+          })
+          .join("");
+        return (
+          "" +
+          '<article class="' +
+          className +
+          ' reveal is-visible" ' +
+          dataAttr +
+          ' tabindex="0" role="button">' +
+          '<div class="card-image"><img src="' +
+          escapeHtml(options.image) +
+          '" alt="' +
+          escapeHtml(options.title) +
+          '" onerror="this.style.display=\'none\'"></div>' +
+          '<div class="card-body">' +
+          '<h3 class="card-title">' +
+          noWidows(escapeHtml(options.title)) +
+          "</h3>" +
+          '<p class="card-text">' +
+          noWidows(escapeHtml(options.excerpt)) +
+          "</p>" +
+          '<div class="card-meta">' +
+          meta +
+          "</div>" +
+          "</div>" +
+          "</article>"
+        );
+      }
+
+      function renderProjects() {
+        var root = document.getElementById("projectsGrid");
+        var filtered =
+          activeFilter === "all"
+            ? projects
+            : projects.filter(function (project) {
+                return project.categories.indexOf(activeFilter) !== -1;
+              });
+        root.innerHTML = filtered
+          .map(function (project) {
+            return cardTemplate({
+              type: "project",
+              id: project.id,
+              image: project.cover,
+              title: project[currentLang].title,
+              excerpt: project[currentLang].excerpt,
+              meta: project.categories.map(function (category) {
+                return translations[currentLang].filters[category];
+              }),
+            });
+          })
+          .join("");
+        root.querySelectorAll("[data-project]").forEach(function (card) {
+          card.addEventListener("click", function () {
+            openProject(card.getAttribute("data-project"));
+          });
+          card.addEventListener("keydown", function (event) {
+            if (event.key === "Enter")
+              openProject(card.getAttribute("data-project"));
+          });
+        });
+      }
+
+      function renderPosts() {
+        var tjRoot = document.getElementById("tjPostsGrid");
+        tjRoot.innerHTML = tjPosts
+          .map(function (post) {
+            return cardTemplate({
+              type: "tj",
+              id: post.id,
+              image: post.image,
+              title: post[currentLang].title,
+              excerpt: post[currentLang].excerpt,
+              meta: [currentLang === "ru" ? "посты" : "posts"],
+            });
+          })
+          .join("");
+        tjRoot.querySelectorAll("[data-tj]").forEach(function (card) {
+          card.addEventListener("click", function () {
+            openPost(card.getAttribute("data-tj"), tjPosts);
+          });
+        });
+
+        var curatorRoot = document.getElementById("curatorPostsGrid");
+        curatorRoot.innerHTML = curatorPosts
+          .map(function (post) {
+            return cardTemplate({
+              type: "curator",
+              id: post.id,
+              image: post.image,
+              title: post[currentLang].title,
+              excerpt: post[currentLang].excerpt,
+              meta: [currentLang === "ru" ? "посты" : "posts"],
+            });
+          })
+          .join("");
+        curatorRoot.querySelectorAll("[data-curator]").forEach(function (card) {
+          card.addEventListener("click", function () {
+            openPost(card.getAttribute("data-curator"), curatorPosts);
+          });
+        });
+      }
+
+      function renderDocuments() {
+        var root = document.getElementById("documentsGrid");
+        root.innerHTML = documentsData
+          .map(function (doc) {
+            return cardTemplate({
+              type: "document",
+              id: doc.id,
+              image: doc.image,
+              title: doc[currentLang].title,
+              excerpt: doc[currentLang].excerpt,
+              meta: [],
+            });
+          })
+          .join("");
+        root.querySelectorAll("[data-document]").forEach(function (card) {
+          card.addEventListener("click", function () {
+            openDocument(card.getAttribute("data-document"));
+          });
+          card.addEventListener("keydown", function (event) {
+            if (event.key === "Enter")
+              openDocument(card.getAttribute("data-document"));
+          });
+        });
+      }
+
+      function carouselTemplate(images, alt) {
+        var slides = images
+          .map(function (image) {
+            return (
+              '<div class="carousel-slide"><img src="' +
+              escapeHtml(image) +
+              '" alt="' +
+              escapeHtml(alt) +
+              '" onerror="this.style.display=\'none\'"></div>'
+            );
+          })
+          .join("");
+        var controls =
+          images.length > 1
+            ? "" +
+              '<div class="carousel-controls">' +
+              '<button class="icon-button" type="button" data-prev aria-label="' +
+              escapeHtml(translations[currentLang].prev) +
+              '">←</button>' +
+              '<button class="icon-button" type="button" data-next aria-label="' +
+              escapeHtml(translations[currentLang].next) +
+              '">→</button>' +
+              "</div>"
+            : "";
+        return (
+          '<div class="carousel" data-carousel><div class="carousel-track">' +
+          slides +
+          "</div>" +
+          controls +
+          "</div>"
+        );
+      }
+
+      function openProject(id) {
+        var project = projects.find(function (item) {
+          return item.id === id;
+        });
+        if (!project) return;
+        var stages = "";
+        if (project.stages) {
+          stages =
+            '<div class="stage-list">' +
+            project.stages[currentLang]
+              .map(function (stage) {
+                return (
+                  '<div class="stage-card"><strong>' +
+                  noWidows(escapeHtml(stage.title)) +
+                  "</strong><span>" +
+                  noWidows(escapeHtml(stage.text)) +
+                  "</span></div>"
+                );
+              })
+              .join("") +
+            "</div>";
+        }
+        var actionClass =
+          project.id === "meanflow"
+            ? "modal-actions meanflow-actions"
+            : "modal-actions";
+        var links = project.links
+          .map(function (link) {
+            return (
+              '<a href="' +
+              escapeHtml(link.url) +
+              '" target="_blank" rel="noreferrer">' +
+              noWidows(escapeHtml(link.label)) +
+              " <span>↗</span></a>"
+            );
+          })
+          .join("");
+        var tags = project.categories
+          .map(function (category) {
+            return (
+              '<span class="tag">' +
+              noWidows(
+                escapeHtml(translations[currentLang].filters[category]),
+              ) +
+              "</span>"
+            );
+          })
+          .join("");
+        openModal(
+          "" +
+            '<h2 id="modalTitle">' +
+            noWidows(escapeHtml(project[currentLang].title)) +
+            "</h2>" +
+            carouselTemplate(project.images, project[currentLang].title) +
+            "<p>" +
+            noWidows(escapeHtml(project[currentLang].text)) +
+            "</p>" +
+            stages +
+            '<div class="tag-list">' +
+            tags +
+            "</div>" +
+            '<div class="' +
+            actionClass +
+            '">' +
+            links +
+            "</div>",
+        );
+        initCarousel();
+      }
+
+      function openPost(id, source) {
+        var post = source.find(function (item) {
+          return item.id === id;
+        });
+        if (!post) return;
+        var link = post.url
+          ? '<div class="modal-actions"><a href="' +
+            escapeHtml(post.url) +
+            '" target="_blank" rel="noreferrer">Telegram <span>↗</span></a></div>'
+          : "";
+        openModal(
+          "" +
+            '<h2 id="modalTitle">' +
+            noWidows(escapeHtml(post[currentLang].title)) +
+            "</h2>" +
+            carouselTemplate([post.image], post[currentLang].title) +
+            "<p>" +
+            noWidows(escapeHtml(post[currentLang].text)) +
+            "</p>" +
+            link,
+        );
+        initCarousel();
+      }
+
+      function openDocument(id) {
+        var doc = documentsData.find(function (item) {
+          return item.id === id;
+        });
+        if (!doc) return;
+        var saveLink = doc.url
+          ? '<div class="modal-actions"><a href="' +
+            escapeHtml(doc.url) +
+            '" target="_blank" rel="noreferrer">' +
+            escapeHtml(translations[currentLang].open) +
+            " <span>↗</span></a></div>"
+          : "";
+        openModal(
+          "" +
+            '<h2 id="modalTitle">' +
+            noWidows(escapeHtml(doc[currentLang].title)) +
+            "</h2>" +
+            carouselTemplate([doc.image], doc[currentLang].title) +
+            "<p>" +
+            noWidows(escapeHtml(doc[currentLang].text)) +
+            "</p>" +
+            saveLink,
+        );
+        initCarousel();
+      }
+
+      function initCarousel() {
+        document
+          .querySelectorAll("[data-carousel]")
+          .forEach(function (carousel) {
+            var track = carousel.querySelector(".carousel-track");
+            var slides = carousel.querySelectorAll(".carousel-slide");
+            var index = 0;
+
+            function update() {
+              track.style.transform = "translateX(-" + index * 100 + "%)";
+            }
+
+            var next = carousel.querySelector("[data-next]");
+            var prev = carousel.querySelector("[data-prev]");
+
+            if (next)
+              next.addEventListener("click", function () {
+                index = (index + 1) % slides.length;
+                update();
+              });
+
+            if (prev)
+              prev.addEventListener("click", function () {
+                index = (index - 1 + slides.length) % slides.length;
+                update();
+              });
+
+            document.onkeydown = function (event) {
+              var modal = document.getElementById("modal");
+              if (!modal.classList.contains("is-open")) return;
+
+              if (event.key === "ArrowRight") {
+                index = (index + 1) % slides.length;
+                update();
+              }
+
+              if (event.key === "ArrowLeft") {
+                index = (index - 1 + slides.length) % slides.length;
+                update();
+              }
+
+              if (event.key === "Escape") {
+                closeModal();
+              }
+            };
+          });
+      }
+
+      function openModal(html) {
+        var modal = document.getElementById("modal");
+        document.getElementById("modalContent").innerHTML = html;
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        var modal = document.getElementById("modal");
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      function initReveal() {
+        if (!("IntersectionObserver" in window)) {
+          document.querySelectorAll(".reveal").forEach(function (item) {
+            item.classList.add("is-visible");
+          });
+          return;
+        }
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting)
+                entry.target.classList.add("is-visible");
+            });
+          },
+          { threshold: 0.12 },
+        );
+        document.querySelectorAll(".reveal").forEach(function (item) {
+          observer.observe(item);
+        });
+      }
+
+      function applyI18n() {
+        document.documentElement.lang = currentLang;
+        setHtmlByI18n();
+        document.getElementById("langToggle").textContent =
+          currentLang === "ru" ? "EN" : "RU";
+        renderStrengths();
+        renderFilters();
+        renderProjects();
+        renderPosts();
+        renderDocuments();
+      }
+
+      function runTests() {
+        console.assert(
+          typeof translations.ru.brand === "string",
+          "RU brand exists",
+        );
+        console.assert(
+          translations.ru.brand === "losvinka",
+          "Header uses pseudonym only",
+        );
+        console.assert(
+          translations.ru.filters.posts === undefined,
+          "Project filters do not include posts",
+        );
+        console.assert(
+          projects.length === 3,
+          "Three main projects are available",
+        );
+        console.assert(
+          tjPosts.length === 11,
+          "Eleven T—J post placeholders are available",
+        );
+        console.assert(
+          documentsData.length === 4,
+          "Four document cards are available",
+        );
+        console.assert(
+          projects.find(function (item) {
+            return item.id === "meanflow";
+          }).stages.ru.length === 3,
+          "MeanFlow has three stages",
+        );
+        console.assert(
+          document.querySelector('a[href="mailto:tlpak@edu.hse.ru"]') !== null,
+          "Email is correct",
+        );
+        console.assert(
+          documentsData.every(function (doc) {
+            return (
+              typeof doc.url === "string" &&
+              doc.url.indexOf("https://disk.yandex.ru/") === 0
+            );
+          }),
+          "Document save links exist",
+        );
+        console.assert(
+          typeof renderDocuments === "function",
+          "renderDocuments is valid",
+        );
+        console.assert(
+          document.querySelector(".language-badge") !== null,
+          "Language badges exist",
+        );
+      }
+
+      document
+        .getElementById("langToggle")
+        .addEventListener("click", function () {
+          currentLang = currentLang === "ru" ? "en" : "ru";
+          applyI18n();
+        });
+
+      document
+        .getElementById("modalClose")
+        .addEventListener("click", closeModal);
+      document
+        .getElementById("modal")
+        .addEventListener("click", function (event) {
+          if (event.target.id === "modal") closeModal();
+        });
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") closeModal();
+      });
+
+      applyI18n();
+      initReveal();
+      runTests();
+    </script>
+  </body>
+</html>
