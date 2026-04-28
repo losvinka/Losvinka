@@ -669,7 +669,24 @@
       .document-card {
         min-height: 360px;
       }
+      .burger {
+        display: none;
+        width: 42px;
+        height: 42px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        background: rgba(248, 241, 232, 0.8);
+        cursor: pointer;
+      }
 
+      .burger span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        margin: 5px auto;
+        border-radius: 999px;
+        background: var(--ink);
+      }
       .contact-section {
         padding: 0;
         margin-top: 46px;
@@ -936,6 +953,32 @@
       }
 
       @media (max-width: 640px) {
+        .header-inner {
+          flex-direction: row;
+          align-items: center;
+        }
+
+        .burger {
+          display: block;
+        }
+
+        .nav {
+          display: none;
+          width: 100%;
+          flex-direction: column;
+          align-items: stretch;
+          padding-top: 10px;
+        }
+
+        .nav.is-open {
+          display: flex;
+        }
+
+        .nav a,
+        .lang-toggle {
+          width: 100%;
+          justify-content: flex-start;
+        }
         .container,
         .contact-inner {
           width: min(100% - 20px, var(--max));
@@ -971,6 +1014,16 @@
             <span class="brand-dot" aria-hidden="true"></span>
             <span data-i18n="brand">losvinka</span>
           </a>
+          <button
+            class="burger"
+            type="button"
+            id="burger"
+            aria-label="Открыть меню"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
           <nav class="nav" aria-label="Навигация">
             <a href="#about" data-i18n="navAbout">обо мне</a>
             <a href="#projects" data-i18n="navProjects">проекты</a>
@@ -2115,7 +2168,26 @@
       document.addEventListener("keydown", function (event) {
         if (event.key === "Escape") closeModal();
       });
+      document.getElementById("burger").addEventListener("click", function () {
+        document.querySelector(".nav").classList.toggle("is-open");
+      });
 
+      document.addEventListener("click", function (event) {
+        var nav = document.querySelector(".nav");
+        var burger = document.getElementById("burger");
+
+        if (!nav.classList.contains("is-open")) return;
+
+        if (!nav.contains(event.target) && !burger.contains(event.target)) {
+          nav.classList.remove("is-open");
+        }
+      });
+
+      document.querySelectorAll(".nav a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          document.querySelector(".nav").classList.remove("is-open");
+        });
+      });
       applyI18n();
       initReveal();
       runTests();
