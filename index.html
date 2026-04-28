@@ -848,7 +848,36 @@
         color: var(--white);
         line-height: 1.25;
       }
+      .tj-links {
+        display: flex;
+        gap: 12px;
+        margin-top: 16px;
+        flex-wrap: wrap;
+      }
 
+      .btn {
+        display: inline-block;
+        padding: 10px 16px;
+        border-radius: 999px;
+        background: var(--blue-deep);
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        border: 1px solid var(--line);
+        color: var(--ink);
+      }
       .stage-list {
         display: grid;
         gap: 12px;
@@ -1152,7 +1181,23 @@
                 />
                 <h3 data-i18n="tjTitle"></h3>
                 <p class="post-group-intro" data-i18n="tjIntro"></p>
-                <div class="posts-grid" id="tjPostsGrid"></div>
+                <div class="tj-links">
+                  <a
+                    href="https://www.youtube.com/@T_J_youtube"
+                    target="_blank"
+                    rel="noreferrer"
+                    class="link-button"
+                    data-i18n="tjLink"
+                  ></a>
+
+                  <a
+                    href="https://disk.yandex.ru/i/2urg21bleH-Q0g"
+                    target="_blank"
+                    rel="noreferrer"
+                    class="link-button"
+                    data-i18n="tjLetter"
+                  ></a>
+                </div>
               </div>
               <div class="post-group reveal">
                 <img
@@ -1284,6 +1329,8 @@
             "Благодаря обучению на программе «Управление в креативных индустриях» у меня есть базовые навыки кодинга, маркетинга и разработки нон-скриптед форматов.<br><br><strong>*На сайте представлены не все проекты. С другими работами можно ознакомиться на сайте <a href='https://hsedesign.ru/account/losvinka' target='_blank' style='text-decoration: underline;'>HSE Portfolio ↗</a>.</strong>",
           postsTitle: "Посты",
           tjTitle: "Посты в Т—Ж",
+          tjLink: "Смотреть канал Т—Ж ↗",
+          tjLetter: "Рекомендательное письмо ↗",
           tjIntro:
             "С октября по декабрь я работала с текстами для Т—Ж: писала посты, адаптировала материалы под формат площадки, работала с подачей, структурой и редакторской логикой. Этот опыт помог мне лучше понять, как писать понятно, живо и точно, сохраняя интонацию медиа и интерес читателя.",
           curatorsTitle: "Посты в «Кураторах Вышки»",
@@ -1292,9 +1339,6 @@
           docsTitle: "Документы и рекомендации",
           docsNote:
             "Сертификаты, справки и рекомендательные письма можно открыть в полноформатном режиме.",
-          guideTitle: "Как добавить изображения",
-          guideIntro:
-            "Создайте папку assets/images рядом с index.html. Затем положите туда изображения с такими названиями. Если хотите изменить имя файла, поменяйте путь в массивах данных внутри script.",
           contactsTitle: "Связаться со мной",
           footerName: "Тамара Пак / losvinka",
           footerRole: "Редактор, копирайтер, креативные индустрии",
@@ -1345,6 +1389,8 @@
             "Through the Creative Industries Management programme, I have developed basic skills in coding, marketing and non-scripted format development.<br><br><strong>*Not all projects are shown here. More work is available on <a href='https://hsedesign.ru/account/losvinka' target='_blank' style='text-decoration: underline;'>HSE Portfolio ↗</a>.</strong>",
           postsTitle: "Posts",
           tjTitle: "Posts for T—J",
+          tjLink: "View T—J channel ↗",
+          tjLetter: "Recommendation letter ↗",
           tjIntro:
             "From October to December, I worked on texts for T—J: writing posts, adapting materials for the platform, and shaping structure, tone and editorial logic. This experience helped me understand how to write clearly, vividly and precisely while preserving a media brand’s voice and the reader’s interest.",
           curatorsTitle: "Posts for HSE Curators",
@@ -1353,9 +1399,6 @@
           docsTitle: "Documents and references",
           docsNote:
             "Certificates, proof of study and recommendation letters can be opened in full-screen view.",
-          guideTitle: "How to add images",
-          guideIntro:
-            "Create an assets/images folder next to index.html. Then add images using these filenames. To rename a file, update the corresponding path in the data arrays inside the script.",
           contactsTitle: "Let’s get in touch",
           footerName: "Tamara Pak / losvinka",
           footerRole: "Editor, copywriter, creative industries",
@@ -1863,25 +1906,6 @@
       }
 
       function renderPosts() {
-        var tjRoot = document.getElementById("tjPostsGrid");
-        tjRoot.innerHTML = tjPosts
-          .map(function (post) {
-            return cardTemplate({
-              type: "tj",
-              id: post.id,
-              image: post.image,
-              title: post[currentLang].title,
-              excerpt: post[currentLang].excerpt,
-              meta: [currentLang === "ru" ? "посты" : "posts"],
-            });
-          })
-          .join("");
-        tjRoot.querySelectorAll("[data-tj]").forEach(function (card) {
-          card.addEventListener("click", function () {
-            openPost(card.getAttribute("data-tj"), tjPosts);
-          });
-        });
-
         var curatorRoot = document.getElementById("curatorPostsGrid");
         curatorRoot.innerHTML = curatorPosts
           .map(function (post) {
@@ -1895,12 +1919,31 @@
             });
           })
           .join("");
+
         curatorRoot.querySelectorAll("[data-curator]").forEach(function (card) {
           card.addEventListener("click", function () {
             openPost(card.getAttribute("data-curator"), curatorPosts);
           });
         });
       }
+      var curatorRoot = document.getElementById("curatorPostsGrid");
+      curatorRoot.innerHTML = curatorPosts
+        .map(function (post) {
+          return cardTemplate({
+            type: "curator",
+            id: post.id,
+            image: post.image,
+            title: post[currentLang].title,
+            excerpt: post[currentLang].excerpt,
+            meta: [currentLang === "ru" ? "посты" : "posts"],
+          });
+        })
+        .join("");
+      curatorRoot.querySelectorAll("[data-curator]").forEach(function (card) {
+        card.addEventListener("click", function () {
+          openPost(card.getAttribute("data-curator"), curatorPosts);
+        });
+      });
 
       function renderDocuments() {
         var root = document.getElementById("documentsGrid");
