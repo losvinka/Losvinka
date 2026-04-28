@@ -863,7 +863,24 @@
         border-radius: var(--radius-md);
         background: rgba(255, 249, 239, 0.9);
       }
-
+      .note-block {
+        margin-top: 18px;
+        padding: 16px 18px;
+        border-radius: 16px;
+        background: linear-gradient(
+          135deg,
+          rgba(200, 216, 232, 0.6),
+          rgba(242, 160, 194, 0.3)
+        );
+        color: var(--blue-deep);
+        font-weight: 500;
+        line-height: 1.6;
+      }
+      .note-block {
+        opacity: 0.95;
+        box-shadow: 0 10px 30px rgba(22, 22, 57, 0.08);
+        font-size: 17px;
+      }
       .guide-card {
         padding: clamp(22px, 4vw, 34px);
         background: rgba(200, 216, 232, 0.46);
@@ -1169,7 +1186,7 @@
             "С октября по декабрь я работала с текстами для Т—Ж: писала посты, адаптировала материалы под формат площадки, работала с подачей, структурой и редакторской логикой. Этот опыт помог мне лучше понять, как писать понятно, живо и точно, сохраняя интонацию медиа и интерес читателя.",
           curatorsTitle: "Посты в «Кураторах Вышки»",
           curatorsIntro:
-            "В «Кураторах Вышки» я отвечаю за редакторское направление: веду тексты, рассылки, публикации и координирую коммуникацию в рамках пиар-кампаний. Для меня это не только работа с постами, но и полноценное управление тоном, структурой и логикой коммуникации большого студенческого сообщества. На сайте представлены не все посты, но вся моя деятельность в качестве главного редактора начинается с 3 января 2026 года.",
+            "В «Кураторах Вышки»  я отвечаю за редакторское направление: веду тексты, рассылки, публикации и координирую коммуникацию в рамках пиар-кампаний. Для меня это не только работа с постами, но и полноценное управление тоном, структурой и логикой коммуникации большого студенческого сообщества.</p><div class='note-block'>*На сайте представлены не все посты, но вся моя деятельность в качестве главного редактора начинается с 3 января 2026 года.</div><p>",
           docsTitle: "Документы и рекомендации",
           docsNote:
             "Сертификаты, справки и рекомендательные письма можно открыть в полноформатном режиме.",
@@ -1228,7 +1245,7 @@
             "From October to December, I worked on texts for T—J: writing posts, adapting materials for the platform, and shaping structure, tone and editorial logic. This experience helped me understand how to write clearly, vividly and precisely while preserving a media brand’s voice and the reader’s interest.",
           curatorsTitle: "Posts for HSE Curators",
           curatorsIntro:
-            "At HSE Curators, I am responsible for the editorial direction: texts, newsletters, publications and communication for PR campaigns. For me, this is not only about posts, but also about managing tone, structure and the communication logic of a large student community. Not all posts are shown on the website, but my work as editor-in-chief starts from January 3, 2026.",
+            "At HSE Curators, I am responsible for the editorial direction: texts, newsletters, publications and communication for PR campaigns. For me, this is not only about posts, but also about managing tone, structure and the communication logic of a large student community.</p><div class='note-block'>Not all posts are shown on the website, but my work as editor-in-chief starts from January 3, 2026.</div><p>",
           docsTitle: "Documents and references",
           docsNote:
             "Certificates, proof of study and recommendation letters can be opened in full-screen view.",
@@ -1582,11 +1599,7 @@
           var key = node.getAttribute("data-i18n");
           var value = translations[currentLang][key];
           if (typeof value !== "string") return;
-          if (key === "footerNote") {
-            node.innerHTML = noWidows(value);
-          } else {
-            node.textContent = noWidows(value);
-          }
+          node.innerHTML = noWidows(value);
         });
       }
 
