@@ -589,7 +589,27 @@
           var(--blue-soft)
         );
       }
+      .hero-badge {
+        display: inline-block;
+        margin-top: 12px;
+        margin-bottom: 8px;
+        padding: 6px 12px;
+        border-radius: 999px;
 
+        background: linear-gradient(
+          135deg,
+          rgba(242, 160, 194, 0.6),
+          rgba(200, 216, 232, 0.6)
+        );
+
+        color: var(--blue-deep);
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .hero-badge {
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
       .card-image img {
         width: 100%;
         height: 100%;
@@ -1056,6 +1076,7 @@
                 редактор · копирайтер · креативные индустрии
               </div>
               <h1 data-i18n="heroTitle">Тамара Пак</h1>
+              <div class="hero-badge">19 лет · Москва</div>
               <p class="hero-lead" data-i18n="heroLead"></p>
             </div>
             <div class="hero-side reveal">
