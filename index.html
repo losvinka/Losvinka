@@ -1116,7 +1116,7 @@
                 <div class="language-badges" aria-label="Языки">
                   <span class="language-badge">EN — B2</span>
                   <span class="language-badge secondary">FR — A1</span>
-                  <span class="language-badge">Figma — продвинутый</span>
+                  <span class="language-badge" data-i18n="figmaLevel"></span>
                 </div>
                 <p data-i18n="aboutP1"></p>
                 <p data-i18n="aboutP2"></p>
@@ -1266,6 +1266,7 @@
           navProjects: "проекты",
           navPosts: "посты",
           navDocuments: "рекомендации",
+          figmaLevel: "Figma — продвинутый",
           navContacts: "контакты",
           heroKicker: "редактор · копирайтер · креативные индустрии",
           heroTitle: "Тамара Пак",
@@ -1280,7 +1281,7 @@
             "Больше всего мне близки проекты, где нужно совмещать текст, брендинг, структуру и креатив: от редакторской логики до цельной коммуникации.",
           projectsTitle: "Проекты",
           projectsNote:
-            "Благодаря обучению на программе «Управление в креативных индустриях» у меня есть базовые навыки кодинга, маркетинга и разработки нон-скриптед форматов.<br><br><strong>На сайте представлены не все проекты. С другими работами можно ознакомиться на сайте <a href='https://hsedesign.ru/account/losvinka' target='_blank' style='text-decoration: underline;'>HSE Portfolio ↗</a>.</strong>",
+            "Благодаря обучению на программе «Управление в креативных индустриях» у меня есть базовые навыки кодинга, маркетинга и разработки нон-скриптед форматов.<br><br><strong>*На сайте представлены не все проекты. С другими работами можно ознакомиться на сайте <a href='https://hsedesign.ru/account/losvinka' target='_blank' style='text-decoration: underline;'>HSE Portfolio ↗</a>.</strong>",
           postsTitle: "Посты",
           tjTitle: "Посты в Т—Ж",
           tjIntro:
@@ -1326,6 +1327,7 @@
           navProjects: "projects",
           navPosts: "posts",
           navDocuments: "references",
+          figmaLevel: "Figma — advanced",
           navContacts: "contacts",
           heroKicker: "editor · copywriter · creative industries",
           heroTitle: "Tamara Pak",
@@ -1340,14 +1342,14 @@
             "I am especially drawn to projects that combine text, branding, structure and creativity — from editorial logic to complete communication systems.",
           projectsTitle: "Projects",
           projectsNote:
-            "Through the Creative Industries Management programme, I have developed basic skills in coding, marketing and non-scripted format development.<br><br><strong>Not all projects are shown here. More work is available on <a href='https://hsedesign.ru/account/losvinka' target='_blank' style='text-decoration: underline;'>HSE Portfolio ↗</a>.</strong>",
+            "Through the Creative Industries Management programme, I have developed basic skills in coding, marketing and non-scripted format development.<br><br><strong>*Not all projects are shown here. More work is available on <a href='https://hsedesign.ru/account/losvinka' target='_blank' style='text-decoration: underline;'>HSE Portfolio ↗</a>.</strong>",
           postsTitle: "Posts",
           tjTitle: "Posts for T—J",
           tjIntro:
             "From October to December, I worked on texts for T—J: writing posts, adapting materials for the platform, and shaping structure, tone and editorial logic. This experience helped me understand how to write clearly, vividly and precisely while preserving a media brand’s voice and the reader’s interest.",
           curatorsTitle: "Posts for HSE Curators",
           curatorsIntro:
-            "At HSE Curators, I am responsible for the editorial direction: texts, newsletters, publications and communication for PR campaigns. For me, this is not only about posts, but also about managing tone, structure and the communication logic of a large student community.</p><div class='note-block'>Not all posts are shown on the website, but my work as editor-in-chief starts from January 3, 2026.</div><p>",
+            "At HSE Curators, I am responsible for the editorial direction: texts, newsletters, publications and communication for PR campaigns. For me, this is not only about posts, but also about managing tone, structure and the communication logic of a large student community.</p><div class='note-block'>*Not all posts are shown on the website, but my work as editor-in-chief starts from January 3, 2026.</div><p>",
           docsTitle: "Documents and references",
           docsNote:
             "Certificates, proof of study and recommendation letters can be opened in full-screen view.",
@@ -1423,15 +1425,18 @@
           ],
           links: [
             {
-              label: "Этап 1 · Начало разработки",
+              labelRu: "Этап 1 · Начало разработки",
+              labelEn: "Stage 1 · Project start",
               url: "https://hsedesign.ru/project/a5ba8759f43a48789034e1950376e819",
             },
             {
-              label: "Этап 2 · Брендбук и прототип",
+              labelRu: "Этап 2 · Брендбук и прототип",
+              labelEn: "Stage 2 · Brand book and prototype",
               url: "https://hsedesign.ru/project/d1c20372dce249128639114eee3d2918",
             },
             {
-              label: "Этап 3 · Нон-скриптед и интервью",
+              labelRu: "Этап 3 · Нон-скриптед и интервью",
+              labelEn: "Stage 3 · Non-scripted and interviews",
               url: "https://hsedesign.ru/project/4ad801cbe5994dc8921848936a3be10d",
             },
           ],
@@ -1532,7 +1537,33 @@
         "Выход выпуска про «экономику бессмертия». Тема рынка долголетия и его последствий.",
         "Анонс выпуска про технофеодализм. Подводка к теме власти цифровых платформ над пользователями.",
       ];
+      var tjEnExcerpts = [
+        "Announcement for an episode about infobusiness and cults.",
+        "Useful information about online courses.",
+        "Announcement about fatigue and burnout.",
+        "Useful information about work efficiency.",
+        "Announcement about free housing in the USSR.",
+        "Video release about housing in the USSR.",
+        "Useful information about housing in the USSR.",
+        "Video release about gambling addiction.",
+        "Useful information about gambling addiction.",
+        "Video release about the immortality economy.",
+        "Announcement about techno-feudalism.",
+      ];
 
+      var tjEnTexts = [
+        "Announcement for an episode about infobusiness. A story of a person who got involved in a cult-like organisation, with an introduction to the topic of manipulation.",
+        "A useful checklist on how to recognise manipulation in online courses. A breakdown of common triggers and tricks used by “gurus”.",
+        "Announcement for an episode about fatigue and burnout. A promise to explore the causes of constant exhaustion.",
+        "A material based on research about efficiency and the separation of life areas. The main point: it is not about the amount of work, but about priorities.",
+        "Announcement for an episode about the myth of free housing in the USSR, introduced through a common misconception.",
+        "Episode release: debunking the myth of free housing and explaining the real conditions for receiving apartments.",
+        "Additional material: a detailed article about how housing was actually distributed.",
+        "Episode release about gambling addiction. A breakdown of the mechanisms of addiction in games and apps.",
+        "Useful material: how to recognise gambling addiction and what to do about it.",
+        "Episode release about the “immortality economy”. A look at the longevity market and its consequences.",
+        "Announcement for an episode about techno-feudalism. An introduction to the power of digital platforms over users.",
+      ];
       for (var tjIndex = 1; tjIndex <= 11; tjIndex += 1) {
         tjPosts.push({
           id: "tj-" + tjIndex,
@@ -1544,8 +1575,8 @@
           },
           en: {
             title: "T—J post #" + tjIndex,
-            excerpt: "An example of editorial work for T—J social posts.",
-            text: "An example of a T—J post: shaping structure and tone, adapting the material to the platform format and preserving the editorial voice.",
+            excerpt: tjEnExcerpts[tjIndex - 1],
+            text: tjEnTexts[tjIndex - 1],
           },
         });
       }
@@ -1961,7 +1992,9 @@
               '<a href="' +
               escapeHtml(link.url) +
               '" target="_blank" rel="noreferrer">' +
-              noWidows(escapeHtml(link.label)) +
+              noWidows(
+                escapeHtml(currentLang === "ru" ? link.labelRu : link.labelEn),
+              ) +
               " <span>↗</span></a>"
             );
           })
