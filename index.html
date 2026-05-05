@@ -107,9 +107,10 @@
         left: 0;
         width: 100%;
         z-index: 100;
+        padding: 0;
       }
       main {
-        padding-top: 90px;
+        padding-top: 52px;
       }
 
       .header-inner {
@@ -117,9 +118,12 @@
         align-items: center;
         justify-content: space-between;
         gap: 18px;
+
+        width: 100%;
         padding: 11px 14px;
+
         border: 1px solid var(--line);
-        border-radius: var(--radius-lg);
+        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
         background: rgba(248, 241, 232, 0.8);
         box-shadow: 0 12px 32px rgba(22, 22, 57, 0.08);
         backdrop-filter: blur(18px);
@@ -606,6 +610,47 @@
         font-size: 14px;
         font-weight: 600;
       }
+
+      .hero-slider {
+        position: relative;
+      }
+
+      .hero-slider img {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        animation: heroFade 9s infinite;
+      }
+
+      .hero-slider img:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .hero-slider img:nth-child(2) {
+        animation-delay: 3s;
+      }
+
+      .hero-slider img:nth-child(3) {
+        animation-delay: 6s;
+      }
+
+      @keyframes heroFade {
+        0% {
+          opacity: 0;
+        }
+        8% {
+          opacity: 1;
+        }
+        30% {
+          opacity: 1;
+        }
+        38% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
       .hero-badge {
         backdrop-filter: blur(6px);
         border: 1px solid rgba(255, 255, 255, 0.4);
@@ -848,6 +893,28 @@
         color: var(--white);
         line-height: 1.25;
       }
+      .modal-link-row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 100%;
+      }
+      .modal-link-row:has(.modal-link-note) {
+        margin-top: 10px;
+        flex-basis: 100%;
+      }
+      .modal-link-row:has(.modal-link-note) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .modal-link-note {
+        max-width: 420px;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.45;
+      }
       .tj-links {
         display: flex;
         gap: 12px;
@@ -867,7 +934,25 @@
           transform 0.15s ease,
           box-shadow 0.15s ease;
       }
+      .modal-lang {
+        position: sticky;
+        top: 14px;
+        float: right;
+        z-index: 2;
 
+        height: 44px;
+        min-width: 52px;
+        margin: 14px 8px 0 0;
+        padding: 0 12px;
+
+        border-radius: var(--radius-md);
+        border: 1px solid var(--line);
+        background: var(--paper);
+        color: var(--ink);
+
+        font-size: 14px;
+        cursor: pointer;
+      }
       .btn:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
@@ -1082,8 +1167,8 @@
 
   <body>
     <div class="page">
-      <header class="site-header container">
-        <div class="header-inner">
+      <header class="site-header">
+        <div class="header-inner container">
           <a href="#top" class="brand" aria-label="На главную">
             <span class="brand-dot" aria-hidden="true"></span>
             <span data-i18n="brand">losvinka</span>
@@ -1124,12 +1209,10 @@
             </div>
 
             <div class="hero-side reveal">
-              <figure class="hero-photo">
-                <img
-                  src="./assets/images/hero.jpg"
-                  alt="Тамара Пак"
-                  onerror="this.style.display = 'none'"
-                />
+              <figure class="hero-photo hero-slider">
+                <img src="./assets/images/hero.jpg" alt="Тамара Пак" />
+                <img src="./assets/images/hero-2.jpg" alt="Тамара Пак" />
+                <img src="./assets/images/hero-3.jpg" alt="Тамара Пак" />
               </figure>
             </div>
           </div>
@@ -1293,6 +1376,7 @@
         >
           ×
         </button>
+        <button class="modal-lang" id="modalLangToggle">EN</button>
         <div class="modal-content" id="modalContent"></div>
       </div>
     </div>
@@ -1301,6 +1385,7 @@
       "use strict";
 
       var currentLang = "ru";
+      var modalLang = currentLang;
       var activeFilter = "all";
 
       var translations = {
@@ -1444,18 +1529,25 @@
               labelEn: "View on HSE Design",
               url: "https://hsedesign.ru/project/b127dfcc965442eaaa169b2f1aab9d22",
             },
+            {
+              labelRu: "Полный проект",
+              labelEn: "Full project",
+              url: "https://portfolio.hse.ru/Project/260756#",
+              noteRu: "всё о проекте и все варианты айдентики",
+              noteEn: "everything about the project and all identity versions",
+            },
           ],
           ru: {
             title: "SONDER",
             excerpt:
               "Брендинг выдуманной выставки о человеческих жизнях и личных историях.",
-            text: "На последнем модуле первого курса я создала брендинг выдуманной выставки SONDER. SONDER — выставка человеческих жизней, в которой каждый может рассказать свою историю: простую, повседневную, личную. Мы редко задумываемся о том, что каждый человек живёт своей сложной, полной жизнью — со своими заботами, радостями, страхами и привычками. SONDER — это пространство, где видно, что за каждым лицом скрывается целый мир.",
+            text: "На последнем модуле первого курса я создала брендинг выдуманной выставки.<br><br><strong>SONDER</strong> — это выставка человеческих жизней, в которой каждый может рассказать свою историю: простую, повседневную, личную.<br><br>Мы редко задумываемся о том, что каждый человек живёт своей сложной, полной жизнью — со своими заботами, радостями, страхами и привычками. Это пространство, где видно, что за каждым лицом скрывается целый мир.",
           },
           en: {
             title: "SONDER",
             excerpt:
               "Branding for a fictional exhibition about human lives and personal stories.",
-            text: "During the final module of my first year, I created the branding for SONDER, a fictional exhibition about human lives. SONDER is a space where anyone can share a story: simple, everyday and personal. We rarely think about the fact that every person lives a complex, full life, with their own concerns, joys, fears and routines. SONDER makes this visible: behind every face, there is an entire world.",
+            text: "During the final module of my first year, I created the branding for a fictional exhibition.<br><br><strong>SONDER</strong> — an exhibition of human lives, where anyone can share their story: simple, everyday, and personal.<br><br>We rarely think about the fact that every person lives a complex, full life — with their own concerns, joys, fears, and routines. It’s a space that reveals the entire world behind every face.",
           },
         },
         {
@@ -1518,13 +1610,19 @@
             title: "MeanFlow*",
             excerpt:
               "Сервис эмоциональной персонализации, который помогает выражать чувства через язык цветов.",
-            text: "На втором курсе я работала над проектом MeanFlow*. Это сервис эмоциональной персонализации, который помогает людям выражать чувства через язык цветов. Пользователь выбирает эмоцию или повод, а платформа превращает это в осмысленный букет с объяснением символики и готовым текстом открытки. В рамках проекта был разработан нон-скриптед формат, отдельный формат интервью, брендбук и прототип мобильного приложения.",
+            text:
+              "На втором курсе я работала над проектом MeanFlow*." +
+              "<br><br>" +
+              "Это сервис эмоциональной персонализации, который помогает людям выражать чувства через язык цветов. Пользователь выбирает эмоцию или повод, а платформа превращает это в осмысленный букет с объяснением символики и готовым текстом открытки. В рамках проекта был разработан нон-скриптед формат, отдельный формат интервью, брендбук и прототип мобильного приложения.",
           },
           en: {
             title: "MeanFlow*",
             excerpt:
               "An emotional personalisation service that helps people express feelings through flowers.",
-            text: "In my second year, I worked on MeanFlow*, an emotional personalisation service that helps people express feelings through the language of flowers. The user chooses an emotion or an occasion, and the platform turns it into a meaningful bouquet with symbolic explanations and a ready-to-use card message. The project included a non-scripted format, a dedicated interview format, a brand book and a mobile app prototype.",
+            text:
+              "In my second year, I worked on the MeanFlow* project." +
+              "<br><br>" +
+              "It is an emotional personalisation service that helps people express their feelings through the language of flowers. The user chooses an emotion or occasion, and the platform turns it into a meaningful bouquet with symbolic explanations and a ready-to-use card message. The project also included a non-scripted format, an interview series, a brand book and a mobile app prototype.",
           },
         },
         {
@@ -1550,6 +1648,37 @@
             excerpt:
               "A visual research project on a biblical story and its interpretations across time.",
             text: "As part of the programme, we also work with visual research and the analysis of cultural narratives. For one of these projects, I chose the biblical story of Susanna and the Elders and explored how it was visually interpreted in different historical periods.",
+          },
+        },
+        {
+          id: "dire",
+          categories: ["branding"],
+          cover: "./assets/images/dire-cover.jpg",
+          images: [
+            "./assets/images/dire-cover.jpg",
+            "./assets/images/dire-1.jpg",
+            "./assets/images/dire-2.jpg",
+            "./assets/images/dire-3.jpg",
+            "./assets/images/dire-4.jpg",
+          ],
+          links: [
+            {
+              labelRu: "Полный проект",
+              labelEn: "Full project",
+              url: "https://portfolio.hse.ru/Project/256858#",
+            },
+          ],
+          ru: {
+            title: "DIRE",
+            excerpt:
+              "Приложение, которое превращает детские рисунки в аудиогиды-подкасты.",
+            text: "Этот проект был придуман в рамках практики.<br><br><strong>DIRE</strong> — это приложение, которое превращает детские рисунки в аудиогиды-подкасты. Ребёнок сам рассказывает, что он нарисовал, и его голос сохраняется рядом с каждой работой. Благодаря этому создаётся семейная коллекция, где искусство говорит — буквально. Это архив для будущего, который сохраняет уникальные воспоминания и творческие истории ребёнка на долгие годы.",
+          },
+          en: {
+            title: "DIRE",
+            excerpt:
+              "An app that turns children’s drawings into audio-guide podcasts.",
+            text: "This project was developed as part of an internship.<br><br><strong>DIRE</strong> — is an app that transforms children’s drawings into audio-guide podcasts. The child explains their drawing in their own voice, which is then stored alongside each piece. This creates a family collection where art literally speaks. It becomes an archive for the future, preserving unique memories and creative stories for years to come.",
           },
         },
       ];
@@ -2020,17 +2149,53 @@
           "</div>"
         );
       }
+      var lastOpenedModalType = null;
+      var lastOpenedModalId = null;
+      var lastOpenedModalSource = null;
+      document;
+      document
+        .getElementById("modalLangToggle")
+        .addEventListener("click", function () {
+          modalLang = modalLang === "ru" ? "en" : "ru";
 
+          if (lastOpenedModalType === "project") {
+            openProject(lastOpenedModalId);
+          }
+
+          if (lastOpenedModalType === "post") {
+            openPost(lastOpenedModalId, lastOpenedModalSource);
+          }
+
+          if (lastOpenedModalType === "document") {
+            openDocument(lastOpenedModalId);
+          }
+
+          document.getElementById("modalLangToggle").textContent =
+            modalLang === "ru" ? "EN" : "RU";
+        });
       function openProject(id) {
+        var modal = document.getElementById("modal");
+
+        if (!modal.classList.contains("is-open")) {
+          modalLang = currentLang;
+        }
+
+        lastOpenedModalType = "project";
+        lastOpenedModalId = id;
+        lastOpenedModalSource = null;
+        document.getElementById("modalLangToggle").style.display =
+          "inline-block";
+
         var project = projects.find(function (item) {
           return item.id === id;
         });
         if (!project) return;
+
         var stages = "";
         if (project.stages) {
           stages =
             '<div class="stage-list">' +
-            project.stages[currentLang]
+            project.stages[modalLang]
               .map(function (stage) {
                 return (
                   '<div class="stage-card"><strong>' +
@@ -2043,42 +2208,56 @@
               .join("") +
             "</div>";
         }
+
         var actionClass =
           project.id === "meanflow"
             ? "modal-actions meanflow-actions"
             : "modal-actions";
+
         var links = project.links
           .map(function (link) {
+            var note = modalLang === "ru" ? link.noteRu : link.noteEn;
+
             return (
+              '<div class="modal-link-row">' +
               '<a href="' +
               escapeHtml(link.url) +
               '" target="_blank" rel="noreferrer">' +
               noWidows(
-                escapeHtml(currentLang === "ru" ? link.labelRu : link.labelEn),
+                escapeHtml(modalLang === "ru" ? link.labelRu : link.labelEn),
               ) +
-              " <span>↗</span></a>"
+              " <span>↗</span></a>" +
+              (note
+                ? '<span class="modal-link-note">' +
+                  noWidows(escapeHtml(note)) +
+                  "</span>"
+                : "") +
+              "</div>"
             );
           })
           .join("");
+
         var tags = project.categories
           .map(function (category) {
             return (
               '<span class="tag">' +
-              noWidows(
-                escapeHtml(translations[currentLang].filters[category]),
-              ) +
+              noWidows(escapeHtml(translations[modalLang].filters[category])) +
               "</span>"
             );
           })
           .join("");
+
+        document.getElementById("modalLangToggle").textContent =
+          modalLang === "ru" ? "EN" : "RU";
+
         openModal(
           "" +
             '<h2 id="modalTitle">' +
-            noWidows(escapeHtml(project[currentLang].title)) +
+            noWidows(escapeHtml(project[modalLang].title)) +
             "</h2>" +
-            carouselTemplate(project.images, project[currentLang].title) +
+            carouselTemplate(project.images, project[modalLang].title) +
             "<p>" +
-            noWidows(escapeHtml(project[currentLang].text)) +
+            noWidows(project[modalLang].text) +
             "</p>" +
             stages +
             '<div class="tag-list">' +
@@ -2090,56 +2269,94 @@
             links +
             "</div>",
         );
+
         initCarousel();
       }
 
       function openPost(id, source) {
+        var modal = document.getElementById("modal");
+
+        if (!modal.classList.contains("is-open")) {
+          modalLang = currentLang;
+        }
+
+        lastOpenedModalType = "post";
+        lastOpenedModalId = id;
+        lastOpenedModalSource = source;
+
+        document.getElementById("modalLangToggle").style.display =
+          "inline-block";
+
         var post = source.find(function (item) {
           return item.id === id;
         });
         if (!post) return;
+
         var link = post.url
           ? '<div class="modal-actions"><a href="' +
             escapeHtml(post.url) +
             '" target="_blank" rel="noreferrer">Telegram <span>↗</span></a></div>'
           : "";
+
+        document.getElementById("modalLangToggle").textContent =
+          modalLang === "ru" ? "EN" : "RU";
+
         openModal(
           "" +
             '<h2 id="modalTitle">' +
-            noWidows(escapeHtml(post[currentLang].title)) +
+            noWidows(escapeHtml(post[modalLang].title)) +
             "</h2>" +
-            carouselTemplate([post.image], post[currentLang].title) +
+            carouselTemplate([post.image], post[modalLang].title) +
             "<p>" +
-            noWidows(escapeHtml(post[currentLang].text)) +
+            noWidows(escapeHtml(post[modalLang].text)) +
             "</p>" +
             link,
         );
+
         initCarousel();
       }
-
       function openDocument(id) {
+        var modal = document.getElementById("modal");
+
+        if (!modal.classList.contains("is-open")) {
+          modalLang = currentLang;
+        }
+
+        lastOpenedModalType = "document";
+        lastOpenedModalId = id;
+        lastOpenedModalSource = null;
+
+        document.getElementById("modalLangToggle").style.display =
+          "inline-block";
+
         var doc = documentsData.find(function (item) {
           return item.id === id;
         });
         if (!doc) return;
+
         var saveLink = doc.url
           ? '<div class="modal-actions"><a href="' +
             escapeHtml(doc.url) +
             '" target="_blank" rel="noreferrer">' +
-            escapeHtml(translations[currentLang].open) +
+            escapeHtml(translations[modalLang].open) +
             " <span>↗</span></a></div>"
           : "";
+
+        document.getElementById("modalLangToggle").textContent =
+          modalLang === "ru" ? "EN" : "RU";
+
         openModal(
           "" +
             '<h2 id="modalTitle">' +
-            noWidows(escapeHtml(doc[currentLang].title)) +
+            noWidows(escapeHtml(doc[modalLang].title)) +
             "</h2>" +
-            carouselTemplate([doc.image], doc[currentLang].title) +
+            carouselTemplate([doc.image], doc[modalLang].title) +
             "<p>" +
-            noWidows(escapeHtml(doc[currentLang].text)) +
+            noWidows(escapeHtml(doc[modalLang].text)) +
             "</p>" +
             saveLink,
         );
+
         initCarousel();
       }
 
@@ -2232,6 +2449,10 @@
         setHtmlByI18n();
         document.getElementById("langToggle").textContent =
           currentLang === "ru" ? "EN" : "RU";
+        var modalLangToggle = document.getElementById("modalLangToggle");
+        if (modalLangToggle) {
+          modalLangToggle.textContent = currentLang === "ru" ? "EN" : "RU";
+        }
         renderStrengths();
         renderFilters();
         renderProjects();
